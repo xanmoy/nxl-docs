@@ -1,0 +1,147 @@
+---
+title: Roadmap
+description: The current NXL development roadmap.
+---
+
+# Roadmap
+
+## NXL 0.1 — Frontend
+
+Completed:
+
+- Lexer
+- Parser
+- AST
+- CLI
+- Error handling
+
+## NXL 0.2 — Runtime
+
+Current milestone:
+
+- Runtime values
+- Environment
+- Interpreter
+- Built-ins
+- Arithmetic
+- Comparisons
+- Boolean logic
+- Conditionals
+- Variables
+- Assignments
+- Functions
+- Return
+
+Target:
+
+```nxl
+let name = "Tanmoy"
+let age = 23
+
+fn greet(name) {
+    return "Hello, " + name
+}
+
+if age >= 18 {
+    print(greet(name))
+}
+```
+
+Expected output:
+
+```text
+Hello, Tanmoy
+```
+
+## NXL 0.3 — Collections
+
+Potential features:
+
+```nxl
+let numbers = [1, 2, 3, 4]
+
+print(numbers[0])
+```
+
+Potential additions:
+
+- Arrays
+- Indexing
+- Maps
+- String methods
+- Collection operations
+
+## NXL 0.4 — Control Flow
+
+Potential features:
+
+- `for`
+- `while`
+- `break`
+- `continue`
+
+## NXL 0.5 — Functions & Modules
+
+Potential features:
+
+- Modules
+- Imports
+- Exports
+- Standard library
+
+Example:
+
+```nxl
+import math
+
+print(math.sqrt(16))
+```
+
+## NXL 0.6 — Developer Experience
+
+Potential tools:
+
+```text
+nxl fmt
+nxl check
+nxl run
+nxl build
+```
+
+And eventually:
+
+- Formatter
+- Linter
+- Language Server
+- Editor integrations
+- Debugger
+
+## NXL 0.7+ — Performance
+
+The initial interpreter can eventually evolve into a bytecode compiler and virtual machine:
+
+```text
+Source
+  ↓
+Lexer
+  ↓
+Parser
+  ↓
+AST
+  ↓
+Bytecode compiler
+  ↓
+NXL Virtual Machine
+```
+
+Potentially:
+
+```text
+Source
+  ↓
+AST
+  ↓
+Bytecode
+  ↓
+VM
+```

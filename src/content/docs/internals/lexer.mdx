@@ -1,0 +1,75 @@
+---
+title: Lexer
+description: Learn how NXL performs lexical analysis.
+---
+
+# Lexer
+
+The lexer converts raw source code into tokens.
+
+This process is called **lexical analysis**.
+
+For:
+
+```nxl
+let x = 10
+```
+
+the input characters are grouped into:
+
+```text
+LET
+IDENTIFIER("x")
+EQUAL
+NUMBER(10)
+```
+
+## Lexer responsibilities
+
+### Keywords
+
+```text
+let const fn if else for while return true false null and or not
+```
+
+### Operators
+
+```text
++ - * / % = == != > >= < <=
+```
+
+### Delimiters
+
+```text
+( ) { } [ ] , . :
+```
+
+### Strings
+
+```text
+"Hello"
+'Tanmoy'
+```
+
+### Numbers
+
+```text
+123
+42.5
+```
+
+### Comments
+
+```nxl
+// This is a comment
+```
+
+### Identifiers
+
+```text
+name
+age
+my_variable
+```
+
+Tokens preserve source information such as the token type, lexeme, literal value, line, and column.

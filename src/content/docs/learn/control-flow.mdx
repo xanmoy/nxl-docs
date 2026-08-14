@@ -1,0 +1,39 @@
+---
+title: Control Flow
+description: Understand blocks and conditional syntax in NXL.
+---
+
+# Control Flow
+
+NXL uses `{}` to define blocks.
+
+A conditional has the form:
+
+```nxl
+if age >= 18 {
+    print("Adult")
+} else {
+    print("Minor")
+}
+```
+
+Blocks are represented in the AST and environments provide the mechanism for nested scopes.
+
+## Current status
+
+Conditional syntax can be represented by the parser and AST, but conditional runtime execution is still being developed.
+
+The current runtime roadmap includes:
+
+- Boolean expression evaluation
+- Comparison evaluation
+- `if` / `else` execution
+- Loops
+- `break`
+- `continue`
+
+This distinction is important:
+
+> Parser support ≠ Runtime support
+
+A language feature normally needs to exist across multiple layers.

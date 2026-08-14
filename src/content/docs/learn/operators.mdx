@@ -1,0 +1,71 @@
+---
+title: Operators
+description: Learn NXL operators and how the parser handles precedence.
+---
+
+# Operators
+
+The lexer recognizes operators such as:
+
+```text
++ - * / % = == != > >= < <=
+```
+
+The parser determines how these operators are structured.
+
+## Operator precedence
+
+Conceptually, NXL parses expressions through these precedence levels:
+
+```text
+assignment
+    │
+    ▼
+logical OR
+    │
+    ▼
+logical AND
+    │
+    ▼
+equality
+    │
+    ▼
+comparison
+    │
+    ▼
+term
+    │
+    ▼
+factor
+    │
+    ▼
+unary
+    │
+    ▼
+call
+    │
+    ▼
+primary
+```
+
+For:
+
+```nxl
+let result = a + b * 2
+```
+
+the AST is:
+
+```text
+      +
+     /     a   *
+       /       b   2
+```
+
+Therefore `b * 2` is evaluated first, producing:
+
+```text
+a + (b * 2)
+```
+
+This is handled by the parser, not the lexer. The lexer only identifies the individual tokens.

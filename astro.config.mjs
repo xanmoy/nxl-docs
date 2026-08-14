@@ -1,26 +1,83 @@
-// @ts-check
-import { defineConfig } from 'astro/config';
-import starlight from '@astrojs/starlight';
+import { defineConfig } from 'astro/config'
+import starlight from '@astrojs/starlight'
 
-// https://astro.build/config
 export default defineConfig({
-	integrations: [
-		starlight({
-			title: 'My Docs',
-			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/withastro/starlight' }],
-			sidebar: [
-				{
-					label: 'Guides',
-					items: [
-						// Each item here is one entry in the navigation menu.
-						{ label: 'Example Guide', slug: 'guides/example' },
-					],
-				},
-				{
-					label: 'Reference',
-					items: [{ autogenerate: { directory: 'reference' } }],
-				},
-			],
-		}),
-	],
-});
+  integrations: [
+    starlight({
+      title: 'NXL',
+      description:
+        'A simple, expressive programming language built from scratch in Rust.',
+
+      social: [
+        {
+          icon: 'github',
+          label: 'GitHub',
+          href: 'https://github.com/xanmoy/nxl',
+        },
+      ],
+
+      sidebar: [
+        {
+          label: 'Getting Started',
+          items: [
+            {
+              autogenerate: {
+                directory: 'getting-started',
+              },
+            },
+          ],
+        },
+        {
+          label: 'Learn NXL',
+          items: [
+            {
+              autogenerate: {
+                directory: 'learn',
+              },
+            },
+          ],
+        },
+        {
+          label: 'Language',
+          items: [
+            {
+              autogenerate: {
+                directory: 'language',
+              },
+            },
+          ],
+        },
+        {
+          label: 'Internals',
+          items: [
+            {
+              autogenerate: {
+                directory: 'internals',
+              },
+            },
+          ],
+        },
+        {
+          label: 'Reference',
+          items: [
+            {
+              autogenerate: {
+                directory: 'reference',
+              },
+            },
+          ],
+        },
+        {
+          label: 'Contributing',
+          items: [
+            {
+              autogenerate: {
+                directory: 'contributing',
+              },
+            },
+          ],
+        },
+      ],
+    }),
+  ],
+})

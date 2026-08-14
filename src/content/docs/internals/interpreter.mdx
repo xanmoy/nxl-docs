@@ -1,0 +1,111 @@
+---
+title: Interpreter
+description: Learn how NXL executes the AST.
+---
+
+# Interpreter
+
+The interpreter is the execution engine.
+
+It takes the AST and evaluates it:
+
+```text
+Program
+   │
+   ▼
+Statement
+   │
+   ▼
+Expression
+   │
+   ▼
+Runtime Value
+```
+
+## Variable declaration
+
+For:
+
+```nxl
+let name = "Tanmoy"
+```
+
+the interpreter:
+
+1. Evaluates `"Tanmoy"`.
+2. Creates a runtime `Value`.
+3. Stores it in the environment.
+
+Conceptually:
+
+```text
+"Tanmoy"
+    ↓
+Value::String
+    ↓
+Environment
+    ↓
+name → "Tanmoy"
+```
+
+## Variable lookup
+
+For:
+
+```nxl
+print(name)
+```
+
+the interpreter evaluates:
+
+```text
+Identifier("name")
+        ↓
+Environment.get("name")
+        ↓
+Value::String("Tanmoy")
+```
+
+## Built-in `print()`
+
+NXL currently has one built-in function:
+
+```nxl
+print("Hello")
+```
+
+The parser creates:
+
+```text
+Call
+├── callee: print
+└── arguments:
+    └── "Hello"
+```
+
+The interpreter recognizes `print` as a built-in, evaluates its argument, and sends it to stdout.
+
+For:
+
+```nxl
+print(23)
+```
+
+the output is:
+
+```text
+23
+```
+
+## Current runtime
+
+The interpreter currently understands:
+
+- variable declarations
+- literal values
+- variable lookup
+- expression statements
+- blocks
+- `print()`
+
+The AST and parser already contain more functionality than the interpreter currently executes. This is intentional: the architecture allows language features to be implemented incrementally.

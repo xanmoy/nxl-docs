@@ -1,0 +1,147 @@
+---
+title: Development
+description: Build, test, and contribute to the NXL compiler.
+---
+
+# Development
+
+NXL is developed incrementally. Each meaningful language feature should be considered across all compiler/runtime layers.
+
+For example, adding `+` requires:
+
+```text
+Lexer
+  ↓
+TokenType::Plus
+  ↓
+Parser
+  ↓
+Expression::Binary
+  ↓
+Interpreter
+  ↓
+Runtime Value
+```
+
+The lexer recognizes `+`. The parser understands where it belongs. The AST represents the operation. The interpreter evaluates it. The runtime provides the resulting value.
+
+## Build
+
+```bash
+cargo build
+```
+
+## Optimized build
+
+```bash
+cargo build --release
+```
+
+## Check
+
+```bash
+cargo check
+```
+
+## Run
+
+```bash
+cargo run -- examples/hello.nxl
+```
+
+## Testing
+
+NXL will eventually have tests at multiple levels.
+
+### Lexer tests
+
+Test:
+
+```text
+source → tokens
+```
+
+For example, `let x = 10` should produce:
+
+```text
+LET
+IDENTIFIER
+EQUAL
+NUMBER
+```
+
+### Parser tests
+
+Test:
+
+```text
+tokens → AST
+```
+
+For example:
+
+```text
+a + b * 2
+```
+
+must produce:
+
+```text
+a + (b * 2)
+```
+
+### Interpreter tests
+
+Test:
+
+```text
+AST → runtime result
+```
+
+For example:
+
+```nxl
+let x = 10
+print(x)
+```
+
+should produce:
+
+```text
+10
+```
+
+### Integration tests
+
+Eventually:
+
+```text
+.nxl file
+   ↓
+NXL CLI
+   ↓
+complete execution
+   ↓
+expected stdout
+```
+
+## Git workflow
+
+Each meaningful feature should have its own commit.
+
+Examples:
+
+```bash
+git add src/runtime.rs
+git commit -m "feat: add NXL runtime value types"
+
+git add src/environment.rs
+git commit -m "feat: add NXL environment and scope handling"
+
+git add src/interpreter.rs
+git commit -m "feat: add initial NXL interpreter"
+
+git commit -m "feat: add print builtin"
+```
+
+This makes the project history useful for understanding how the language evolved.

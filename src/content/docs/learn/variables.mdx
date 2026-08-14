@@ -1,0 +1,91 @@
+---
+title: Variables
+description: Understand variable declarations, lookup, assignment, and scopes in NXL.
+---
+
+# Variables
+
+Variables allow NXL programs to store values.
+
+A declaration looks like:
+
+```nxl
+let age = 23
+let name = "Tanmoy"
+```
+
+The interpreter evaluates the initializer, creates a runtime value, and stores it in the environment.
+
+Conceptually:
+
+```text
+"Tanmoy"
+    ↓
+Value::String
+    ↓
+Environment
+    ↓
+name → "Tanmoy"
+```
+
+## Variable lookup
+
+When NXL evaluates:
+
+```nxl
+print(name)
+```
+
+the interpreter performs the equivalent of:
+
+```text
+Identifier("name")
+        ↓
+Environment.get("name")
+        ↓
+Value::String("Tanmoy")
+```
+
+## Assignment
+
+The environment also has an `assign()` operation.
+
+The intended behavior is:
+
+```nxl
+let age = 23
+age = 24
+```
+
+This updates the existing variable.
+
+## Scopes
+
+NXL uses environments to represent scopes.
+
+```nxl
+let x = 10
+
+if true {
+    let x = 20
+    print(x)
+}
+
+print(x)
+```
+
+Conceptually:
+
+```text
+Global
+│
+├── x = 10
+│
+└── If Block
+    │
+    └── x = 20
+```
+
+Inside the block, `x` refers to `20`; outside, it refers to `10`.
+
+Parent environments allow nested scopes to find values from outer scopes.

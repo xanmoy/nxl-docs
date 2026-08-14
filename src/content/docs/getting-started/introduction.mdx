@@ -1,0 +1,47 @@
+---
+title: Introduction
+description: Learn what NXL is and why it exists.
+---
+
+# Introduction
+
+NXL is an experimental programming language designed to keep the simplicity of Python while introducing a more familiar C/Java/Rust-style syntax.
+
+The defining syntax difference is:
+
+```nxl
+if age >= 18 {
+    print("Adult")
+}
+```
+
+NXL uses `{}` to define blocks instead of indentation.
+
+The compiler and runtime are being built from scratch in Rust.
+
+## Why NXL?
+
+NXL started with a simple idea:
+
+> What if Python had a simple syntax but used `{}` instead of indentation?
+
+For comparison, Python uses indentation:
+
+```python
+if age >= 18:
+    print("Adult")
+else:
+    print("Minor")
+```
+
+NXL uses braces:
+
+```nxl
+if age >= 18 {
+    print("Adult")
+} else {
+    print("Minor")
+}
+```
+
+The goal isn't to simply clone Python. NXL is an experiment in understanding how programming languages work while designing a language with its own syntax, runtime, and eventually its own ecosystem.

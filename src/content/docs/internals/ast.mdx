@@ -1,0 +1,95 @@
+---
+title: Abstract Syntax Tree
+description: Learn how NXL represents program structure with an AST.
+---
+
+# Abstract Syntax Tree
+
+AST stands for **Abstract Syntax Tree**.
+
+It is the structured representation of NXL code.
+
+The AST contains concepts such as:
+
+```text
+Program
+Statement
+Expression
+LiteralValue
+```
+
+## Program
+
+A program contains statements:
+
+```rust
+Program {
+    statements: Vec<Statement>
+}
+```
+
+For:
+
+```nxl
+let x = 10
+let y = 20
+```
+
+the structure is:
+
+```text
+Program
+├── VariableDeclaration
+└── VariableDeclaration
+```
+
+## Statements
+
+Current statement concepts include:
+
+```text
+VariableDeclaration
+Expression
+Block
+If
+Function
+Return
+```
+
+## Expressions
+
+Current expression concepts include:
+
+```text
+Literal
+Identifier
+Binary
+Unary
+Assignment
+Call
+```
+
+## Example
+
+Source:
+
+```nxl
+let result = a + b * 2
+```
+
+AST:
+
+```text
+VariableDeclaration
+│
+├── name: result
+│
+└── initializer
+       │
+       ▼
+     Binary(+)
+      /         a    Binary(*)
+          /               b        2
+```
+
+This tree is what the interpreter eventually walks.

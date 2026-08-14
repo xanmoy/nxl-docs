@@ -1,0 +1,82 @@
+---
+title: Types and Values
+description: Understand literals and runtime values in NXL.
+---
+
+# Types and Values
+
+Literal values represent values directly present in source code.
+
+Examples:
+
+```text
+123
+3.14
+"hello"
+true
+false
+null
+```
+
+These are represented by the `Literal` enum in the frontend.
+
+At runtime, values are represented separately.
+
+```rust
+pub enum Value {
+    Number(f64),
+    String(String),
+    Boolean(bool),
+    Null,
+}
+```
+
+For example:
+
+```nxl
+let age = 23
+```
+
+can become:
+
+```text
+Value::Number(23.0)
+```
+
+and:
+
+```nxl
+let name = "Tanmoy"
+```
+
+becomes:
+
+```text
+Value::String("Tanmoy")
+```
+
+## Why separate AST literals from runtime values?
+
+The AST describes the program. The runtime describes values while the program runs.
+
+For example:
+
+```text
+AST:     Literal(Number(23))
+Runtime: Value::Number(23.0)
+```
+
+This separation becomes increasingly important as the language grows.
+
+Potential future runtime values include:
+
+```text
+Number
+String
+Boolean
+Null
+Array
+Object
+Function
+NativeFunction
+```

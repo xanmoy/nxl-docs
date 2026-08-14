@@ -1,0 +1,112 @@
+---
+title: Architecture
+description: Understand the complete NXL compiler and interpreter pipeline.
+---
+
+# Architecture
+
+NXL is divided into several stages:
+
+```text
+NXL SOURCE
+    │
+    ▼
+┌───────────────┐
+│     CLI       │
+│   main.rs     │
+└───────┬───────┘
+        │
+        ▼
+┌───────────────┐
+│     Lexer     │
+│   lexer.rs    │
+└───────┬───────┘
+        │
+        ▼
+      Tokens
+        │
+        ▼
+┌───────────────┐
+│    Parser     │
+│  parser.rs    │
+└───────┬───────┘
+        │
+        ▼
+       AST
+        │
+        ▼
+┌───────────────┐
+│  Interpreter  │
+│interpreter.rs │
+└───────┬───────┘
+        │
+   ┌────┴─────┐
+   ▼          ▼
+Environment  Runtime
+environment  runtime
+   │          │
+   └────┬─────┘
+        ▼
+      OUTPUT
+```
+
+## Complete execution pipeline
+
+Suppose the source is:
+
+```nxl
+let age = 23
+
+if age >= 18 {
+    print("Adult")
+}
+```
+
+NXL processes this in stages:
+
+```text
+Source Code
+    ↓
+Lexer
+    ↓
+Tokens
+    ↓
+Parser
+    ↓
+AST
+    ↓
+Interpreter
+    ↓
+Environment + Runtime Values
+    ↓
+Output
+```
+
+Each stage has a focused responsibility.
+
+## How everything connects
+
+```text
+hello.nxl
+    │ source text
+    ▼
+main.rs
+    │
+    ▼
+lexer.rs
+    │ Vec<Token>
+    ▼
+parser.rs
+    │ Program
+    ▼
+ast.rs
+    │
+    ▼
+interpreter.rs
+    │
+    ├── environment.rs
+    └── runtime.rs
+    │
+    ▼
+stdout
+```

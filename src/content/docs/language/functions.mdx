@@ -1,0 +1,32 @@
+---
+title: Functions
+description: The current function model and planned function execution in NXL.
+---
+
+# Functions
+
+Function syntax is part of the NXL AST and runtime roadmap.
+
+The planned syntax is:
+
+```nxl
+fn greet(name) {
+    return "Hello, " + name
+}
+```
+
+A function call can then look like:
+
+```nxl
+print(greet(name))
+```
+
+The current runtime milestone includes:
+
+- Functions
+- Function calls
+- `return`
+
+Function execution is still under development.
+
+The AST currently includes function and return statement concepts, while the interpreter is being implemented incrementally.

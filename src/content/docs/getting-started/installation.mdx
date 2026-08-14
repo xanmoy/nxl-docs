@@ -1,0 +1,67 @@
+---
+title: Installation
+description: Build NXL from source using Rust and Cargo.
+---
+
+# Installation
+
+NXL is currently developed from source.
+
+## Requirements
+
+You need:
+
+- Rust
+- Cargo
+- Git
+
+Check your installation:
+
+```bash
+rustc --version
+cargo --version
+```
+
+## Clone the repository
+
+```bash
+git clone https://github.com/xanmoy/nxl.git
+cd nxl
+```
+
+## Build
+
+```bash
+cargo build
+```
+
+For an optimized build:
+
+```bash
+cargo build --release
+```
+
+## Check
+
+```bash
+cargo check
+```
+
+## Run
+
+```bash
+cargo run -- examples/hello.nxl
+```
+
+The `--` separates Cargo arguments from arguments passed to the NXL executable.
+
+```text
+cargo run -- examples/hello.nxl
+           └── passed to NXL
+```
+
+Eventually the project will provide an installed executable:
+
+```bash
+nxl examples/hello.nxl
+```

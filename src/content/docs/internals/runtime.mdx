@@ -1,0 +1,82 @@
+---
+title: Runtime
+description: Learn how NXL represents values and stores execution state.
+---
+
+# Runtime
+
+The runtime defines values that exist while an NXL program executes.
+
+Currently:
+
+```rust
+pub enum Value {
+    Number(f64),
+    String(String),
+    Boolean(bool),
+    Null,
+}
+```
+
+For:
+
+```nxl
+let age = 23
+```
+
+the runtime can hold:
+
+```text
+Value::Number(23.0)
+```
+
+For:
+
+```nxl
+let name = "Tanmoy"
+```
+
+it holds:
+
+```text
+Value::String("Tanmoy")
+```
+
+## Environment
+
+The environment stores variables:
+
+```text
+Environment
+
+name → "Tanmoy"
+age  → 23
+```
+
+It uses a hash map internally.
+
+### Define
+
+```text
+define("age", Value::Number(23))
+```
+
+### Get
+
+```text
+get("age")
+```
+
+returns:
+
+```text
+Value::Number(23)
+```
+
+### Assignment
+
+The environment also has an `assign()` operation for updating existing variables.
+
+### Parent environments
+
+Environments support parent scopes, allowing nested scopes to resolve values from outer scopes.

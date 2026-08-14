@@ -1,0 +1,40 @@
+---
+title: Your First NXL Program
+description: Write and run your first NXL program.
+---
+
+# Your First NXL Program
+
+Create a file called `examples/hello.nxl`:
+
+```nxl
+let name = "Tanmoy"
+
+print(name)
+```
+
+Run it with:
+
+```bash
+cargo run -- examples/hello.nxl
+```
+
+The current interpreter can execute variable declarations, literal values, variable lookup, expression statements, blocks, and the built-in `print()` function.
+
+A slightly larger program looks like:
+
+```nxl
+let name = "Tanmoy"
+let age = 23
+
+print(name)
+print(age)
+
+if age >= 18 {
+    print("Adult")
+} else {
+    print("Minor")
+}
+```
+
+Conditional execution is part of the language design, although some conditional runtime behavior is still under development.

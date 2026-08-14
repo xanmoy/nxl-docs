@@ -1,0 +1,78 @@
+---
+title: Parser
+description: Learn how NXL converts tokens into an abstract syntax tree.
+---
+
+# Parser
+
+The parser converts tokens into an AST.
+
+This process is called **syntactic analysis**.
+
+For:
+
+```nxl
+let x = 10
+```
+
+the parser creates a structure equivalent to:
+
+```text
+VariableDeclaration
+├── name: x
+└── initializer: 10
+```
+
+## Expression precedence
+
+The parser uses precedence levels:
+
+```text
+assignment
+    ↓
+logical OR
+    ↓
+logical AND
+    ↓
+equality
+    ↓
+comparison
+    ↓
+term
+    ↓
+factor
+    ↓
+unary
+    ↓
+call
+    ↓
+primary
+```
+
+For:
+
+```nxl
+a + b * 2
+```
+
+the parser produces:
+
+```text
+      +
+     /     a   *
+       /       b   2
+```
+
+rather than:
+
+```text
+      *
+     /     +   2
+   /   a   b
+```
+
+So the expression means:
+
+```text
+a + (b * 2)
+```

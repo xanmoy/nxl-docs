@@ -1,78 +1,86 @@
-import { defineConfig } from 'astro/config'
-import starlight from '@astrojs/starlight'
+import { defineConfig } from "astro/config";
+import starlight from "@astrojs/starlight";
 
 export default defineConfig({
   integrations: [
     starlight({
-      title: 'NXL',
+      title: "NXL",
       description:
-        'A simple, expressive programming language built from scratch in Rust.',
+        "A simple, expressive programming language built from scratch in Rust.",
+
+      logo: {
+        src: "./src/assets/NXL.png",
+        alt: "NXL",
+        replacesTitle: true,
+      },
+        favicon: "/favicon.ico",
+
 
       social: [
         {
-          icon: 'github',
-          label: 'GitHub',
-          href: 'https://github.com/xanmoy/nxl',
+          icon: "github",
+          label: "GitHub",
+          href: "https://github.com/xanmoy/nxl",
         },
       ],
 
       sidebar: [
         {
-          label: 'Getting Started',
+          label: "Getting Started",
           items: [
             {
               autogenerate: {
-                directory: 'getting-started',
+                directory: "getting-started",
               },
             },
           ],
         },
         {
-          label: 'Learn NXL',
+          label: "Learn NXL",
           items: [
             {
               autogenerate: {
-                directory: 'learn',
+                directory: "learn",
               },
             },
           ],
         },
         {
-          label: 'Language',
+          label: "Language",
           items: [
             {
               autogenerate: {
-                directory: 'language',
+                directory: "language",
               },
             },
           ],
         },
         {
-          label: 'Internals',
+          label: "Internals",
           items: [
             {
               autogenerate: {
-                directory: 'internals',
+                directory: "internals",
               },
             },
           ],
         },
         {
-          label: 'Reference',
+          label: "Reference",
           items: [
             {
               autogenerate: {
-                directory: 'reference',
+                directory: "reference",
               },
             },
           ],
         },
         {
-          label: 'Contributing',
+          label: "Contributing",
           items: [
             {
               autogenerate: {
-                directory: 'contributing',
+                directory: "contributing",
               },
             },
           ],
@@ -80,4 +88,4 @@ export default defineConfig({
       ],
     }),
   ],
-})
+});
